@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-posta Doğrulama</title>
+    <link rel="stylesheet" href="/static/verify.css">
+</head>
+<body>
+    <div class="container">
+        <div class="verification-box">
+            <h2>E-posta Doğrulama</h2>
+            <p>Doğrulama kodunuzu e-postanıza gönderildi. Lütfen 6 haneli kodu girin.</p>
+            <form id="verify-form">
+                <div class="input-container">
+                    <input type="text" id="verification-code" maxlength="6" placeholder="123456" required>
+                    <p id="code-error" class="error_message"></p>
+                </div>
+                <button type="submit" class="verify-button">Doğrula</button>
+            </form>
+            <p class="timer">Kalan süre: <span id="timer">60</span> saniye</p>
+            <a href="/static/kaydol.html" class="back-link">Geri Dön</a>
+        </div>
+    </div>
+    <script src="/static/verify.js"></script>
+</body>
+</html>
