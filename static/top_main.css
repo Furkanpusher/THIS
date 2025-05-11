@@ -1,0 +1,726 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #34495e;
+    --success-color: #27ae60;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Stili */
+.header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    margin-right: 0.5rem;
+}
+
+.header-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.header-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.header-nav a i {
+    margin-right: 0.5rem;
+}
+
+.header-nav a:hover, .header-nav a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Üst Kısım Stili */
+.top-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: white;
+    box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.top-section > * {
+    flex: 1;
+    max-width: 50%;
+}
+
+/* Circular Progress Bar (Büyük - Sol Tarafta) */
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.circular-progress {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.progress-ring__background {
+    fill: none;
+    stroke: #ddd;
+    stroke-width: 10;
+}
+
+.progress-ring__circle {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 10;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke-dasharray: 565.48;
+    stroke-dashoffset: 118.75;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.progress-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.progress-label {
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    color: var(--dark-color);
+}
+
+/* Ortalama Puanlar (Küçük Circular Progress Bar - Sağ Tarafta) */
+.average-ratings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.average-ratings h3 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.average-progress-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.average-progress-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Elemanları sola hizalar */
+    gap: 0.5rem;
+    padding: 0.25rem 1rem 0.25rem 0; /* Sağ tarafa 1rem boşluk ekler */
+}
+.average-progress-item span {
+    font-weight: 450;
+    color: var(--dark-color);
+    font-size: 0.95rem;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+
+.small-circular-progress {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-right: 5rem; /* Sağ tarafa 1rem boşluk ekler */
+}
+
+.small-progress-ring__background {
+    fill: none;
+    stroke: #ddd;
+    stroke-width: 6;
+}
+
+.small-progress-ring__circle {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 6;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke-dasharray: 138.23; /* 2 * π * r = 2 * π * 22 */
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.small-progress-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Ana Layout */
+.layout {
+    display: flex;
+    flex: 1;
+}
+
+/* Ana İçerik */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+/* Kartlar */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: var(--transition);
+
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-date {
+    font-size: 0.9rem;
+    font-weight: 400;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Tablo Stili */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: var(--dark-color);
+    text-align: left;
+    font-weight: 600;
+}
+
+td:last-child {
+    width: 40%;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Slider Stili */
+.slider-container, .optional-slider-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.optional-slider-container {
+    transition: opacity 0.3s ease;
+}
+
+.slider {
+    flex: 1;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.slider::-webkit-slider-thumb:hover {
+    background: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+.slider-value {
+    font-weight: 600;
+    color: var(--primary-color);
+    width: 30px;
+    text-align: center;
+}
+
+/* Görünürlük Durumları */
+.optional-slider-container[style*="display: none"] {
+    opacity: 0;
+}
+
+.optional-slider-container[style*="display: block"] {
+    opacity: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Radio Button Stili */
+.optional-radio {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/* Buton Stili */
+.btn {
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
+    justify-content: center;
+}
+
+.btn-primary:hover {
+    background-position: right center;
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Yorum Alanı */
+.comment-section {
+    margin-top: 1.5rem;
+}
+
+.comment-section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+}
+
+textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    resize: vertical;
+    min-height: 100px;
+    transition: var(--transition);
+    margin-bottom: 1rem;
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.comment-list {
+    margin-top: 1.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.comment-item {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid var(--primary-color);
+    transition: var(--transition);
+}
+
+.comment-item:hover {
+    background-color: white;
+    box-shadow: var(--shadow);
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .header-nav {
+        gap: 0.5rem;
+    }
+    
+    .header-nav a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .menu-toggle {
+        display: block; /* Hamburger menü simgesi mobilde görünür */
+    }
+    
+    .top-section > * {
+        max-width: 100%;
+    }
+    
+    .circular-progress {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .progress-ring__background, .progress-ring__circle {
+        cx: 75;
+        cy: 75;
+        r: 65;
+    }
+    
+    .progress-ring__circle {
+        stroke-dasharray: 408.41;
+        stroke-dashoffset: 85.77;
+    }
+    
+    .progress-value {
+        font-size: 2.5rem;
+    }
+    
+    .average-ratings {
+        width: 100%;
+    }
+    
+    .header-nav {
+        display: none; /* Varsayılan olarak gizle */
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        padding: 1rem;
+    }
+    .header-nav.active {
+        display: flex; /* Menü açıldığında göster */
+    }
+
+    .header-nav a {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+    .average-progress-item span {
+        font-size: 0.85rem; /* Mobilde daha küçük yazı boyutu */
+    }
+
+    .average-progress-container {
+        gap: 0.5rem; /* Elemanlar arası boşluğu azalt */
+    }
+
+    .average-ratings h3 {
+        font-size: 1.1rem; /* Başlık boyutunu küçült */
+    }
+
+}
+
+.average-progress-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Elemanlar arası boşluğu azalt */
+    padding: 0.25rem 0;
+}
+
+
+@media (max-width: 576px) {
+    
+    table {
+        display: block; /* Tabloyu blok yap */
+    }
+
+    thead {
+        display: none; /* Başlıkları gizle */
+    }
+
+    tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .main-content {
+        padding: 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-body > div[style*="text-align: center"] {
+        align-items: stretch;
+    }
+    #submitRatings {
+        width: 100%;
+    }
+    
+    th, td {
+       
+            display: block;
+            text-align: left;
+            padding: 0.5rem;
+        
+    }
+
+    td:last-child {
+        width: 100%; /* Sliderın tam genişlik kaplaması için */
+    }
+
+    .slider-container {
+        gap: 0.5rem;
+    }
+
+    
+    .slider-value {
+        font-size: 0.9rem;
+    }
+    .average-progress-item span {
+        font-size: 0.75rem; /* Daha küçük ekranlar için */
+    }
+    .circular-progress {
+        width: 120px; /* Daha küçük daire */
+        height: 120px;
+    }
+    .progress-ring__background,
+    .progress-ring__circle {
+        cx: 60;
+        cy: 60;
+        r: 52;
+    }
+
+    .progress-ring__circle {
+        stroke-dasharray: 326.73; /* 2 * π * 52 */
+        stroke-dashoffset: 68.61;
+    }
+    .progress-value {
+        font-size: 2rem;
+    }
+    .info-box {
+        font-size: 0.65rem; /* Mobilde daha küçük yazı */
+        padding: 0.25rem 0.5rem; /* Daha küçük iç boşluk */
+        max-width: 100%; /* Tam genişlik */
+    }
+    div[style*="display: flex"] {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+
+}
+
+
+.page-title{
+    margin-bottom: 20px;
+}
+
+
+.image-upload-icon {
+    position: absolute;
+    top: 10px;    /* Textarea’nın üstünden 10px aşağıda */
+    right: 10px;  /* Sağdan 10px içeride */
+    font-size: 36px;  /* İkon boyutu (daha büyük yapmak istersen 30px, 36px dene) */
+    color: #555;      /* Varsayılan renk */
+    cursor: pointer;  /* Üzerine gelince el işareti */
+    z-index: 10;      /* Textarea’nın üstünde kalsın */
+}
+
+.image-upload-icon:hover {
+    color: #007bff;  /* Üzerine gelince mavi (isteğe bağlı) */
+}
+
+/* Textarea’nın ikonla çakışmasını önlemek için padding */
+#commentInput {
+    padding-right: 40px;  /* İkonun kapladığı alanı boş bırak */
+
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+.info-box {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(41, 128, 185, 0.2));
+    color: #2c3e50;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    border-radius: 30px; /* Daha oval görünüm */
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.4;
+    margin-top: 0.75rem;
+    margin-left: auto;
+    margin-right: 0;
+    max-width: 350px;
+    transition: all 0.3s ease;
+    float: right;
+}
+
+
+.card-body > div[style*="text-align: center"] {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
